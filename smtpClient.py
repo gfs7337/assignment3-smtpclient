@@ -11,7 +11,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM)
-    clientSocket.bind((mailserver, port))
+    clientSocket.connect((mailserver, port))
     # Fill in end
 
     recv = clientSocket.recv(1024).decode()
@@ -29,21 +29,21 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
-    mailFrom = 'Mail FROM: gfs7337@nyu.edu\r\n'
+    mailFrom = 'Mail FROM: <gfs7337@nyu.edu>\r\n'
     clientSocket.send(mailFrom.encode())
     recv2 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
-    rcptTo = 'RCPT TO: gfs7337@nyu.edu\r\n'
+    rcptTo = 'RCPT TO: <gfs7337@nyu.edu>\r\n'
     clientSocket.send(rcptTo.encode())
     recv3 = clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
-    data = 'DATA gfs7337@nyu.edu\r\n'
+    data = 'DATA\r\n'
     clientSocket.send(data.encode())
     recv4 = clientSocket.recv(1024).decode()
     # Fill in end
