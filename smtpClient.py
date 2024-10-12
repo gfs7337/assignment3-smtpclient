@@ -70,4 +70,4 @@ def smtp_client(mailserver='127.0.0.1', port=1025):
 
 
 if __name__ == '__main__':
-    smtp_client(1025, '127.0.0.1')
+    smtp_client('127.0.0.1', 1025)
